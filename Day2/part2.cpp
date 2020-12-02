@@ -10,10 +10,12 @@ void    struct_init(t_struct &pw)
     pw.c = 0;
 }
 
-int lazy_linereader(std::string line, t_struct &pw, int count)
+void lazy_linereader(std::string line, t_struct &pw, int count)
 {
     std::string::size_type sz;
-    
+    int check = 0;
+    int len = 1;
+
    for(int i = 0; i < line.length(); i++)
     {
         if (line[i] >= '0' && line[i] <= '9' && pw.min == 0)
@@ -32,13 +34,18 @@ int lazy_linereader(std::string line, t_struct &pw, int count)
             i++;
         }
         while (line[i] >= 'a' && line[i] <= 'z' && pw.c != 0)
-        {
-            if(line[i] == pw.c)
-                count++;
+        {   
+            if(line[i] == pw.c && (len == pw.min || len == pw.max ) && check == 1)
+                pw.correct--;
+            if(line[i] == pw.c && (len == pw.min || len == pw.max ) && check == 0)
+            {
+                pw.correct++;
+                check = 1;
+            }
+            len++;    
             i++;
         }
     }
-    return (count);
 }
 
 int password_checkor()
@@ -53,11 +60,8 @@ int password_checkor()
     pw.correct = 0;
     while(getline (file, line)) 
     {
-        count = lazy_linereader(line, pw, count);
-        if (count >= pw.min && count <= pw.max)
-            pw.correct++;
-        struct_init(pw);
-        count = 0;        
+        lazy_linereader(line, pw, count);
+        struct_init(pw);       
     } 
     file.close();
     return (pw.correct);
@@ -66,7 +70,7 @@ int password_checkor()
 int main(void)
 {
     int answer = password_checkor();    
-    std::cout << "\033[38;5;46m" << "    part 1: " << std::endl;
+    std::cout << "\033[38;5;46m" << "    part 2: " << std::endl;
 //TREE ASCII ART WITH THE ANSWER INSIDE
     std::cout << "\033[38;5;220m      .\n\
    __/ \\__\n\
