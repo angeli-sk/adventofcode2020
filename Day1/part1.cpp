@@ -63,6 +63,8 @@ int main(void)
         << COLOR_RED << "vision "
         << COLOR_GREEN <<  "be like: " 
         << COLOR_GREEN << num << std::endl;
+    delete[] array;
+    file.close(); 
 
 //TREE ASCII ART
     std::cout << "\033[38;5;220m      .\n\
@@ -78,7 +80,5 @@ int main(void)
     \\___/    " << std::endl;
 //END OD TREE ART
 
-    delete[] array;
-    file.close(); 
     return(0);
 }
