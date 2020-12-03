@@ -1,3 +1,6 @@
 [submodule "Day1/colors.h"]
 	path = Day1/colors.h
 	url = https://github.com/angeli-sk/colors.h.git
+[submodule "Day3/colors.h"]
+	path = Day3/colors.h
+	url = https://github.com/angeli-sk/colors.h.git
