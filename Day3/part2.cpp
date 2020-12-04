@@ -4,7 +4,7 @@
 #include <iostream>
 #include "colors.h/colors.h"
 #include <sstream>
-#include "struct2.h"
+#include "struct2.hpp"
 
 int     line_count(std::string file_name)
 {
