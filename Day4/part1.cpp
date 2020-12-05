@@ -41,6 +41,7 @@ int    map_reader()
             valid++;
         count = 0;
     }
+    file.close();
     return (valid);
 }
 

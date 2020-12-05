@@ -65,6 +65,7 @@ void    map_reader(t_struct &str)
     str.Vmap3[0].insert(0, "\033[38;5;46m");
     str.Vmap4[0].insert(0, "\033[38;5;46m");
     str.Vmap5[0].insert(0, "\033[38;5;46m");
+    file.close(); 
 }
 
 int  main(void)
