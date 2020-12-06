@@ -21,10 +21,10 @@ int IDbinaryconvert(std::string boardiepass)
 int highestID(std::vector<std::string> boardiepass)
 {
 	int highest = 0;
-
+    int id = 0;
 	for (int i = 0; i < boardiepass.size(); i++)
     {
-		int id = IDbinaryconvert(boardiepass[i]);
+		id = IDbinaryconvert(boardiepass[i]);
 		if (id > highest)
 			highest = id;
 	}
