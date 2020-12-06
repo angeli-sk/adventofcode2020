@@ -1,3 +1,6 @@
+#ifndef STRUCT_HPP
+# define STRUCT_HPP
+
 typedef struct		s_struct
 {
     char	c;
@@ -5,3 +8,4 @@ typedef struct		s_struct
     int     max;
     int     correct;
 }					t_struct;
+#endif

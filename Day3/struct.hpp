@@ -1,5 +1,7 @@
-#include <vector>
-#include <string>
+#ifndef STRUCT_HPP
+# define STRUCT_HPP
+# include <vector>
+# include <string>
 
 typedef struct		s_struct
 {
@@ -7,3 +9,5 @@ typedef struct		s_struct
     int length;
     int count;
 }					t_struct;
+
+#endif
