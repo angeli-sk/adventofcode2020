@@ -1,92 +1,52 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-//#include <utility>
+#include <vector>
 # define COLOR_RED 		"\033[38;5;196m"
 # define COLOR_GREEN	"\033[38;5;46m"
-# define lower first
-# define upper second
 
-int    rowcheck(std::string line)
+int IDbinaryconvert(std::string boardiepass)
 {
-    std::pair <int,int> half;
-    bool    uporlow;
-
-    half.lower = 0;
-    half.upper = 127;
-    for(int i = 0; i < 7; i++)
+	for (int i = 0; i < 10 ; i++)
     {
-        if (line[i] == 'F')
-        {
-            half.upper = half.upper - ((half.upper - half.lower) / 2);
-            uporlow = true;
-        }    
-        else if (line[i] == 'B')
-        {
-            half.lower = half.lower + ((half.upper - half.lower) / 2);
-            uporlow = false;
-        }
+		if (boardiepass[i] == 'F' || boardiepass[i] == 'L')
+			boardiepass[i] = '0';
+		else 
+			boardiepass[i] = '1';
     }
-    if (uporlow == false)
-        return (half.second);
-    else
-        return (half.first);
-    return (0);
+
+	return (stoi(boardiepass, 0, 2));
 }
 
-int    columncheck(std::string line)
+int highestID(std::vector<std::string> boardiepass)
 {
-    std::pair <int,int> half;
-    bool    uporlow;
+	int highest = 0;
 
-    half.lower = 0;
-    half.upper = 7;
-    for (int i = 7; i < 10; i++)
+	for (int i = 0; i < boardiepass.size(); i++)
     {
-        if (line[i] == 'R')
-        {
-            half.upper = half.upper - ((half.upper - half.lower) / 2);
-            uporlow = true;
-        }    
-        else if (line[i] == 'L')
-        {
-            half.lower = half.lower + ((half.upper - half.lower) / 2);
-            uporlow = false;
-        }
-    }
-    if (uporlow == false)
-        return (half.second);
-    else
-        return (half.first);
-    return (0);
+		int id = IDbinaryconvert(boardiepass[i]);
+		if (id > highest)
+			highest = id;
+	}
+	return (highest);
 }
 
 int    inputcheck()
 {
     std::string line;
-    int row = 0;
-    int column = 0;
-    int highest = 0;
-    int current = 0;
+    std::vector<std::string> seatID;
     std::ifstream file("input");
     if(file.fail())
         return (-1);
     while (getline (file, line))
-    {
-        row = rowcheck(line);
-        column = columncheck(line);
-        current = row * 8 + column;
-        if (current > highest)
-            highest = current;
-    }
+        seatID.push_back(line);
     file.close();
-    return (highest);
+    return (highestID(seatID));
 }
 
 int  main(void)
 {
     int answer = inputcheck();
-    
-    std::cout << COLOR_GREEN << "answer = " << COLOR_RED << answer + 1 << std::endl;
+    std::cout << COLOR_GREEN << "Answer = " << COLOR_RED  << answer << std::endl;
     return (0);
 }    
