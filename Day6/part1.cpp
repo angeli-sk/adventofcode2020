@@ -6,7 +6,7 @@
 # define COLOR_RED 		"\033[38;5;196m"
 # define COLOR_GREEN	"\033[38;5;46m"
 
-std::string removeDuplicates(const std::string &s)
+std::string remove_dups(const std::string &s)
 {
     std::string str;
     std::unordered_set<char> set; //unordered_set avoids duplicates by comparing values uwu!    
@@ -25,7 +25,7 @@ std::string removeDuplicates(const std::string &s)
 std::vector<std::string> double_checkor(std::vector<std::string> v_str)
 {
     for (int i=0; i < v_str.size(); i++)
-        v_str[i] = removeDuplicates(v_str[i]);
+        v_str[i] = remove_dups(v_str[i]);
 
     return(v_str);
 }
