@@ -58,7 +58,6 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
 {
     std::string str;
     std::string line;
-    int max_len = 0;
     int count = 0;
 
     while (getline (file, line))
@@ -69,12 +68,8 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
             break;
         }
         str.append(line);
-
-        if (max_len < (int)line.length())
-            max_len = line.length();
         count++;
     }
-
     return (str);
 }
 
@@ -84,7 +79,7 @@ int answerset(std::ifstream &file, std::vector<std::string> v_str)
     std::string line;
     std::string answer = "lemao";
     std::vector<int> v_int;
-    while (answer != "")
+    while (!answer.empty())
     {
         answer = answer_makor(file, v_int);
         v_str.push_back(answer);
