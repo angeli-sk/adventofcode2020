@@ -64,7 +64,7 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
     {
         if (line == "")
         {
-            v_int.push_back(count);
+            v_int.push_back(line_count);
             break;
         }
         str.append(line);
