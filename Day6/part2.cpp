@@ -10,8 +10,7 @@
 int count_dups(std::string &s, std::string &s_dupless, int people, int tots)
 {
     int n = 0;
-    int find = 0;
-    for (int i = 0; i < s_dupless.length(); i++)
+    for (int i = 0; i < (int)s_dupless.length(); i++)
     {
         n = std::count(s.begin(), s.end(), s_dupless[i]);
         // std::cout << "n= "<< n << std::endl;
@@ -44,9 +43,9 @@ int double_checkor(std::vector<std::string> v_str, std::vector<int> &v_int)
     int tots = 0;
     std::vector<std::string> v_copy;
 
-    for (int i=0; i < v_str.size(); i++)
+    for (int i=0; i < (int)v_str.size(); i++)
         v_copy.push_back(remove_dups(v_str[i]));
-    for (int i=0; i < v_int.size(); i++)
+    for (int i=0; i < (int)v_int.size(); i++)
     {
         //  for(int i = 0; i < v_int.size(); i++)
             // std::cout << v_int[i] << std::endl;
@@ -71,7 +70,7 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
         }
         str.append(line);
 
-        if (max_len < line.length())
+        if (max_len < (int)line.length())
             max_len = line.length();
         count++;
     }
@@ -81,7 +80,6 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
 
 int answerset(std::ifstream &file, std::vector<std::string> v_str)
 {
-    int count = 0;
     std::string str;
     std::string line;
     std::string answer = "lemao";
@@ -96,10 +94,7 @@ int answerset(std::ifstream &file, std::vector<std::string> v_str)
 
 int     answer_checkor()
 {
-    int i = 0;
-    int ii = 0;
     int answer = 0;
-    int line_c = 0;
     std::vector<std::string> v_str;
     std::ifstream file("input");
     if(file.fail())
