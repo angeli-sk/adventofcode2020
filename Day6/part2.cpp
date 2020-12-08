@@ -58,7 +58,7 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
 {
     std::string str;
     std::string line;
-    int count = 0;
+    int line_count = 0; //amount of people
 
     while (getline (file, line))
     {
@@ -68,7 +68,7 @@ std::string    answer_makor(std::ifstream &file, std::vector<int> &v_int)
             break;
         }
         str.append(line);
-        count++;
+        line_count++;
     }
     return (str);
 }
